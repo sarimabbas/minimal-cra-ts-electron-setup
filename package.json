@@ -1,0 +1,67 @@
+{
+  "name": "minimal-cra-ts-electron",
+  "description": "Minimal CRA, TS and Electron setup",
+  "version": "0.1.0",
+  "author": {
+    "name": "Sarim Abbas",
+    "email": "sarim.stays@gmail.com",
+    "url": "https://sarimabbas.com"
+  },
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "electron-is-dev": "^1.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "typescript": "~3.7.2"
+  },
+  "scripts": {
+    "electron:dev": "concurrently \"BROWSER=none yarn react:dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build": "electron-builder --c.extraMetadata.main=build/electron.js",
+    "preelectron:build": "yarn react:build",
+    "react:dev": "react-scripts start",
+    "react:build": "react-scripts build",
+    "react:test": "react-scripts test",
+    "react:eject": "react-scripts eject"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "build": {
+    "appId": "com.sarimabbas.chaos-ts",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1",
+    "wait-on": "^5.2.0"
+  }
+}
