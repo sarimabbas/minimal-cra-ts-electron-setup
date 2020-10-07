@@ -25,6 +25,28 @@ yarn electron:dev
 yarn electron:build
 ```
 
+## FAQ
+
+### How to import Electron in renderer process
+
+```js
+import React from "react"
+const { ipcRenderer } = window.require("electron")
+```
+
+### How to hot reload the main process
+
+```bash
+yarn add electron-reloader -D
+```
+
+```js
+// at the top of electron.js
+try {
+  require("electron-reloader")(module);
+} catch (_) {}
+```
+
 ## Citations
 
 - https://medium.com/@kitze/%EF%B8%8F-from-react-to-an-electron-app-ready-for-production-a0468ecb1da3
